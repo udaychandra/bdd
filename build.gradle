@@ -1,0 +1,16 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.8.1'
+}
+
+subprojects {
+    group "ud.junit.bdd"
+    version "0.1.0-SNAPSHOT"
+
+    apply plugin: "java"
+
+    sourceCompatibility = "1.8"
+
+    repositories {
+        mavenCentral()
+    }
+}
