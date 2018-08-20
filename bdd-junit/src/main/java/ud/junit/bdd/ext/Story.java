@@ -16,6 +16,7 @@
 
 package ud.junit.bdd.ext;
 
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.commons.annotation.Testable;
 
 import java.lang.annotation.ElementType;
@@ -29,7 +30,9 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Testable
+@ExtendWith(StoryExtension.class)
 public @interface Story {
+
 
     /**
      * @return short summary of the story or feature in a plain human language.

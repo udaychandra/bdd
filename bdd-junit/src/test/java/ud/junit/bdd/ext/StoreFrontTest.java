@@ -17,12 +17,9 @@
 package ud.junit.bdd.ext;
 
 import ud.junit.bdd.test.StoreFront;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(StoryExtension.class)
 @Story(name = "Returns go back to the stockpile",
         description = "As a store owner, in order to keep track of stock," +
                 " I want to add items back to stock when they're returned.")
