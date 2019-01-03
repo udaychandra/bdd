@@ -10,13 +10,14 @@ You need to add [JUnit 5](https://junit.org/junit5/docs/current/user-guide/#inst
      <groupId>io.github.udaychandra.bdd</groupId>
      <artifactId>bdd-junit</artifactId>
      <version>0.1.0</version>
+     <scope>test</scope>
    </dependency>
    ```
 
 - Gradle build.gradle
   ```groovy
    dependencies {
-     compile 'io.github.udaychandra.bdd:bdd-junit:0.1.0'
+     testImplementation 'io.github.udaychandra.bdd:bdd-junit:0.1.0'
    }
    ```
 
