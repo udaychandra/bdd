@@ -1,15 +1,19 @@
-ext.jUnitPlatformVersion = '1.2.0'
-ext.jUnitJupiterVersion  = "5.2.0"
+project.ext {
+    pomName = "UD BDD library"
+    pomDescription = "A light weight JUnit 5 based BDD library to create and run stories and behaviors"
+}
 
 dependencies {
     compile project(":bdd-core")
     compile group: "org.junit.jupiter", name: "junit-jupiter-api", version: "$jUnitJupiterVersion"
-
-    testCompile project(":bdd-test-utils")
-
+    
     testRuntime group: "org.junit.jupiter", name: "junit-jupiter-engine", version: "$jUnitJupiterVersion"
 }
 
 test {
     useJUnitPlatform()
+}
+
+if ("$pubToMC" == "yes") {
+    apply from: "${project.rootDir}/publish.gradle"
 }

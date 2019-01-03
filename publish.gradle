@@ -1,0 +1,70 @@
+apply plugin: "maven-publish"
+apply plugin: "signing"
+
+javadoc {
+    failOnError = false
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = "sources"
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = "javadoc"
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            pom {
+                name = "" + project.ext.pomName.toString()
+                description = "" + project.ext.pomDescription.toString()
+                url = "https://github.com/udaychandra/bdd"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "udaychandra"
+                        name = "Uday Tatiraju"
+                        email = "ud.chandra@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/udaychandra/bdd.git"
+                    developerConnection = "scm:git:ssh://github.com/udaychandra/bdd.git"
+                    url = "https://github.com/udaychandra/bdd"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username "$sonatypeUsername"
+                password "$sonatypePassword"
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
