@@ -3,6 +3,4 @@ project.ext {
     pomDescription = "Core library used by the JUnit 5 based UD BDD library"
 }
 
-if ("$pubToMC" == "yes") {
-    apply from: "${project.rootDir}/publish.gradle"
-}
+apply from: "${project.rootDir}/publish.gradle"

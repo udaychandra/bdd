@@ -50,7 +50,7 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
         StoryDetails storyDetails = new StoryDetails()
                 .setName(story.name())
                 .setDescription(story.description())
-                .setClassName(clazz.getName());
+                .setStoryClass(clazz);
 
         context.getStore(NAMESPACE).put(clazz.getName(), storyDetails);
     }

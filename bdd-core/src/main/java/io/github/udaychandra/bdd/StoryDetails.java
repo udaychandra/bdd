@@ -22,7 +22,7 @@ import java.util.Map;
 public class StoryDetails {
     private String name;
     private String description;
-    private String className;
+    private Class<?> storyClass;
 
     private Map<String, Object> store;
 
@@ -48,13 +48,17 @@ public class StoryDetails {
         return this;
     }
 
-    public String getClassName() {
-        return className;
+    public Class<?> getStoryClass() {
+        return storyClass;
     }
 
-    public StoryDetails setClassName(String className) {
-        this.className = className;
+    public StoryDetails setStoryClass(Class<?> storyClass) {
+        this.storyClass = storyClass;
         return this;
+    }
+
+    public String getClassName() {
+        return storyClass.getName();
     }
 
     public Map<String, Object> getStore() {
